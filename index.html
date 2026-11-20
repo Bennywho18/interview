@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 知識圖譜｜機器學習・深度學習・大型語言模型完整指南</title>
+  <meta name="description" content="整理自網路權威資料與前沿研究，以互動圖表、視覺圖解與架構實驗室全面解析機器學習 (ML)、深度學習 (DL) 與大型語言模型 (LLM) 的演進與應用。" />
+
+  <!-- Typography: Graceful fallback to system CJK fonts if offline -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Scroll Reading Progress -->
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">AI</span>
+        <span>智慧演進圖譜</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hierarchy">總覽關係</a></li>
+        <li><a href="#deep-ml">機器學習詳解</a></li>
+        <li><a href="#deep-dl">深度學習詳解</a></li>
+        <li><a href="#deep-llm">LLM 詳解</a></li>
+        <li><a href="#analytics">實證數據</a></li>
+        <li><a href="#timeline">演進史</a></li>
+        <li><a href="#comparison">對照選型</a></li>
+        <li><a href="#glossary">術語詞典</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深淺色主題">
+          <span id="themeIcon">🌙</span>
+          <span id="themeLabel">深夜模式</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="開啟選單">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ====================================================================
+         HERO SECTION
+         ==================================================================== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badges">
+              <span class="pill pill-ml">Machine Learning</span>
+              <span class="pill pill-dl">Deep Learning</span>
+              <span class="pill pill-llm">Large Language Models</span>
+              <span class="pill pill-neutral">2026 前沿整理</span>
+            </div>
+
+            <h1 class="hero-title">
+              從統計規律到自主推理：<br />
+              <span class="gradient-text">ML・DL・LLM 完整知識圖譜</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              機器學習、深度學習與大型語言模型並非彼此割裂的獨立技術，而是一條從「手工特徵工程」走向「多層神經表徵」、最終跨入「兆級參數與測試期推理」的演化光譜。本網站結合實證數據、互動圖表與視覺解析，帶你一次掌握現代 AI 核心全景。
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#hierarchy" class="btn btn-primary">開始探索知識架構 →</a>
+              <a href="#analytics" class="btn btn-secondary">檢視算力與基準圖表</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric-item">
+                <strong>10⁸×</strong>
+                <span>AlexNet (2012) 至 2026 訓練算力跨度</span>
+              </div>
+              <div class="metric-item">
+                <strong>4×–5× / 年</strong>
+                <span>Epoch AI 統計前沿算力年均增速</span>
+              </div>
+              <div class="metric-item">
+                <strong>2M+ Tokens</strong>
+                <span>現代原生長上下文視窗容量</span>
+              </div>
+            </div>
+          </div>
+
+          <figure class="hero-visual-card">
+            <img src="assets/hero-ai-atlas.jpg" alt="人工智慧演進視覺插畫：從結構化資料晶格（機器學習）流向神經波層（深度學習）與自注意力光稜鏡（大型語言模型）" />
+            <figcaption class="hero-visual-caption">
+              <span>資料晶格 (ML) → 類神經層波 (DL) → 自注意力稜鏡 (LLM)</span>
+              <span class="caption-tag">Visual Atlas 01</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 1: INTERACTIVE NESTED HIERARCHY (AI > ML > DL > LLM)
+         ==================================================================== -->
+    <section class="section" id="hierarchy">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">01 / Conceptual Hierarchy</div>
+          <h2 class="section-title">一層包一層的智慧同心圓：AI ⊃ ML ⊃ DL ⊃ LLM</h2>
+          <p class="section-desc">
+            點擊下方同心圓的任一層級或標籤按鈕，即時檢視這四個最容易混淆的概念在定義、資料依賴、特徵工程與實務應用上的精準界線。
+          </p>
+        </div>
+
+        <div class="hierarchy-layout reveal">
+          <div class="hierarchy-svg-box">
+            <svg viewBox="0 0 460 390" width="100%" role="img" aria-label="AI 包含 ML、ML 包含 DL、DL 包含 LLM 互動同心圓圖">
+              <!-- AI Ring -->
+              <g class="ring-group" data-layer="ai">
+                <circle class="ring-shape" cx="230" cy="195" r="180" fill="rgba(51,65,85,0.08)" stroke="#475569" stroke-width="2" />
+                <text x="230" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">人工智慧 Artificial Intelligence (AI)</text>
+                <text x="230" y="59" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">所有模擬人類智慧的系統總稱</text>
+              </g>
+
+              <!-- ML Ring -->
+              <g class="ring-group" data-layer="ml">
+                <circle class="ring-shape" cx="230" cy="222" r="142" fill="rgba(13,148,136,0.12)" stroke="#0D9488" stroke-width="2" />
+                <text x="230" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#0D9488">機器學習 Machine Learning (ML)</text>
+                <text x="230" y="124" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.72">從數據學習統計規律與預測</text>
+              </g>
+
+              <!-- DL Ring -->
+              <g class="ring-group" data-layer="dl">
+                <circle class="ring-shape" cx="230" cy="252" r="102" fill="rgba(79,70,229,0.14)" stroke="#4F46E5" stroke-width="2" />
+                <text x="230" y="180" text-anchor="middle" font-size="13" font-weight="700" fill="#4F46E5">深度學習 Deep Learning (DL)</text>
+                <text x="230" y="196" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.76">多層人工神經網路自動萃取特徵</text>
+              </g>
+
+              <!-- LLM Ring -->
+              <g class="ring-group active" data-layer="llm">
+                <circle class="ring-shape" cx="230" cy="285" r="60" fill="rgba(217,119,6,0.22)" stroke="#D97706" stroke-width="2.6" />
+                <text x="230" y="281" text-anchor="middle" font-size="13.5" font-weight="800" fill="#D97706">大型語言模型</text>
+                <text x="230" y="299" text-anchor="middle" font-size="11" font-family="var(--font-mono)" font-weight="600" fill="currentColor">LLMs</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="hierarchy-detail-panel">
+            <div>
+              <div class="hierarchy-tabs">
+                <button class="h-tab" data-layer="ai" type="button">AI 人工智慧</button>
+                <button class="h-tab" data-layer="ml" type="button">ML 機器學習</button>
+                <button class="h-tab" data-layer="dl" type="button">DL 深度學習</button>
+                <button class="h-tab active" data-layer="llm" type="button">LLM 大型語言模型</button>
+              </div>
+              <div id="hierarchyDetailContent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2: THREE CORE PILLARS DEEP DIVE
+         ==================================================================== -->
+    <section class="section section-alt" id="pillars">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">02 / Core Pillars</div>
+          <h2 class="section-title">三大技術支柱深度剖析</h2>
+          <p class="section-desc">
+            每一層技術並不是用來「淘汰」上一層，而是各自在特定資料形態、算力預算與可解釋性需求下擁有無可取代的定位。
+          </p>
+        </div>
+
+        <div class="bento-3 reveal">
+          <!-- Pillar 1: ML -->
+          <article class="card pillar-card ml">
+            <div class="pillar-header">
+              <div>
+                <h3>機器學習</h3>
+                <span class="en-sub">Classical Machine Learning</span>
+              </div>
+              <div class="pillar-icon">📊</div>
+            </div>
+            <p>
+              透過數學統計與優化演算法，讓電腦從結構化或半結構化資料（如試算表、交易日誌、感測數值）中歸納決策邊界，分為監督式、非監督式與強化學習三大範式。
+            </p>
+            <ul class="feature-list">
+              <li><strong>手工特徵工程：</strong>仰賴領域專家挑選欄位與轉換特徵，模型邏輯透明、易受法規稽核。</li>
+              <li><strong>輕量高效：</strong>數千筆至百萬筆資料即可展現極高準確度，一般 CPU 就能秒級推論。</li>
+              <li><strong>代表應用：</strong>信用卡詐欺偵測、工廠預測性維護、顧客分群行銷、保險精算定價。</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="chip">XGBoost</span>
+              <span class="chip">LightGBM</span>
+              <span class="chip">Random Forest</span>
+              <span class="chip">SVM</span>
+              <span class="chip">K-Means</span>
+            </div>
+          </article>
+
+          <!-- Pillar 2: DL -->
+          <article class="card pillar-card dl">
+            <div class="pillar-header">
+              <div>
+                <h3>深度學習</h3>
+                <span class="en-sub">Deep Neural Networks</span>
+              </div>
+              <div class="pillar-icon">🧠</div>
+            </div>
+            <p>
+              以多層堆疊的人工神經元與反向傳播（Backpropagation）為核心，從原始像素、音訊波形或訊號中「端對端」自動學習由淺入深的抽象表徵。
+            </p>
+            <ul class="feature-list">
+              <li><strong>空間與序列專精：</strong>CNN 稱霸影像網格辨識；RNN/LSTM 擅長時序記憶；Autoencoder 專攻降噪與異常偵測。</li>
+              <li><strong>算力與數據驅動：</strong>需要大量訓練樣本與 GPU / TPU 矩陣平行運算才能發揮威力。</li>
+              <li><strong>代表應用：</strong>醫療 MRI/X 光腫瘤判讀、自駕車環境感知、即時語音轉錄、推薦排序引擎。</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="chip">CNN / ResNet</span>
+              <span class="chip">RNN / LSTM</span>
+              <span class="chip">ViT</span>
+              <span class="chip">Diffusion</span>
+              <span class="chip">Autoencoder</span>
+            </div>
+          </article>
+
+          <!-- Pillar 3: LLM -->
+          <article class="card pillar-card llm">
+            <div class="pillar-header">
+              <div>
+                <h3>大型語言模型</h3>
+                <span class="en-sub">Large Language Models</span>
+              </div>
+              <div class="pillar-icon">✨</div>
+            </div>
+            <p>
+              建立於 Transformer 自注意力架構的超大規模基礎模型，歷經兆級 Token 預訓練、人類偏好對齊（RLHF）與推論期強化學習（Reasoning），實現跨領域認知與代理協作。
+            </p>
+            <ul class="feature-list">
+              <li><strong>從快答到慢思考：</strong>2025–2026 推理模型透過內部思維鏈（CoT）與測試期算力擴展，大幅突破數學與程式瓶頸。</li>
+              <li><strong>原生全模態：</strong>單一骨幹同時詞元化處理文字、程式碼、影像、音訊與即時影片。</li>
+              <li><strong>代表應用：</strong>對話助理、軟體工程師 AI 協作、企業 RAG 知識檢索、多步驟自主 Agent。</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="chip">Transformer</span>
+              <span class="chip">MoE</span>
+              <span class="chip">RLHF / GRPO</span>
+              <span class="chip">RAG</span>
+              <span class="chip">Test-Time Compute</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 3: DEEP DIVE — MACHINE LEARNING (ML)
+         ==================================================================== -->
+    <section class="section" id="deep-ml">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow ml">03 / Machine Learning Deep Dive</div>
+          <h2 class="section-title">深入機器學習：四大範式、工作管線與泛化原理</h2>
+          <p class="section-desc">
+            機器學習的核心使命不是「記住過去的答案」，而是從有限樣本中提煉出能夠準確預測未知資料的<strong>泛化（Generalization）規律</strong>。以下從學習範式、端對端流程，到最關鍵的「偏差–變異權衡」與演算法光譜，逐層拆解機器學習本質。
+          </p>
+        </div>
+
+        <!-- 4 Learning Paradigms -->
+        <div class="paradigm-grid reveal">
+          <article class="paradigm-card">
+            <span class="p-num">PARADIGM 01</span>
+            <h4>監督式學習 Supervised</h4>
+            <p>提供成對的「輸入特徵 X 與標準答案標籤 Y」，讓模型學習兩者的映射函數 f(X) ≈ Y。分為預測連續數值的<strong>迴歸</strong>（如房價預測）與判別類別的<strong>分類</strong>（如垃圾郵件過濾）。</p>
+            <div class="paradigm-meta">代表：線性迴歸、SVM、隨機森林、XGBoost</div>
+          </article>
+
+          <article class="paradigm-card">
+            <span class="p-num">PARADIGM 02</span>
+            <h4>非監督式學習 Unsupervised</h4>
+            <p>資料完全沒有人工標籤，演算法必須自行發掘隱藏結構。核心應用包含將相似樣本歸類的<strong>分群（Clustering）</strong>、壓縮維度的<strong>降維</strong>（PCA）以及異常偵測。</p>
+            <div class="paradigm-meta">代表：K-Means、DBSCAN、PCA、隔離森林</div>
+          </article>
+
+          <article class="paradigm-card">
+            <span class="p-num">PARADIGM 03</span>
+            <h4>半監督 / 自監督學習</h4>
+            <p>現實世界標註資料昂貴且稀缺。透過結合少量標註資料與海量未標註資料（或像語言模型以「遮蔽/預測下個字」自動創造偽標籤），大幅降低人工標註門檻。</p>
+            <div class="paradigm-meta">代表：Pseudo-Labeling、現代預訓練基礎模型</div>
+          </article>
+
+          <article class="paradigm-card">
+            <span class="p-num">PARADIGM 04</span>
+            <h4>強化學習 Reinforcement</h4>
+            <p>代理者（Agent）在環境中不斷嘗試動作（Action），依據回饋獎勵（Reward）學習使長期累積報酬最大化的最佳策略（Policy），廣泛用於博弈、機器人控制與 LLM 對齊。</p>
+            <div class="paradigm-meta">代表：Q-Learning、PPO、GRPO、AlphaGo</div>
+          </article>
+        </div>
+
+        <!-- End-to-End ML Pipeline -->
+        <div class="pipeline-box reveal">
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:8px;">
+            <h3 style="margin:0; font-size:1.15rem;">🔄 標準機器學習專案五階段管線（End-to-End ML Pipeline）</h3>
+            <span style="font-size:0.82rem; color:var(--text-muted);">業界經驗：資料清理與特徵工程往往佔據 60%–80% 時間，卻決定了最終模型上限</span>
+          </div>
+          <div class="pipeline-steps">
+            <div class="pipe-step ml">
+              <span class="step-idx">1</span>
+              <h4>資料收集與清理</h4>
+              <p>處理缺失值、異常極端值、重複紀錄與類別不平衡（如詐欺交易僅佔 0.1%），確保「垃圾不進、模型不偏」。</p>
+            </div>
+            <div class="pipe-step ml">
+              <span class="step-idx">2</span>
+              <h4>特徵工程與縮放</h4>
+              <p>將原始欄位轉化為高價值特徵（如消費頻率、比率指標），並進行 One-Hot 編碼與標準化（StandardScaler）。</p>
+            </div>
+            <div class="pipe-step ml">
+              <span class="step-idx">3</span>
+              <h4>嚴謹資料切分</h4>
+              <p>切分為訓練集（Train）、驗證集（Validation）與獨立測試集（Test），嚴防資料洩漏（Data Leakage）。</p>
+            </div>
+            <div class="pipe-step ml">
+              <span class="step-idx">4</span>
+              <h4>模型訓練與調參</h4>
+              <p>最小化損失函數（MSE / Cross-Entropy），透過 K 折交叉驗證挑選最佳演算法與正則化超參數。</p>
+            </div>
+            <div class="pipe-step ml">
+              <span class="step-idx">5</span>
+              <h4>評估部署與監控</h4>
+              <p>檢視 Precision/Recall、F1、AUC 等業務指標，上線後持續追蹤資料漂移（Data Drift）並定期重訓。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Chart 1: Bias-Variance & Overfitting Simulator -->
+        <div class="explainer-card reveal">
+          <div class="explainer-header">
+            <div>
+              <span class="pill pill-ml" style="margin-bottom:8px;">互動圖表解析 01｜機器學習核心難題</span>
+              <h3>偏差–變異權衡（Bias–Variance Tradeoff）與過擬合動態模擬</h3>
+              <p>拖動下方「模型複雜度」滑桿，同時觀察左圖擬合曲線與右圖訓練/測試誤差 U 型曲線的即時連動變化：</p>
+            </div>
+          </div>
+
+          <div class="control-strip">
+            <div class="slider-group">
+              <label for="mlComplexitySlider">調整模型複雜度（如多項式次數 / 決策樹深度）：</label>
+              <input type="range" id="mlComplexitySlider" class="styled-range ml" min="1" max="10" step="1" value="4" />
+              <span class="value-readout" id="mlComplexityVal">複雜度 4 / 10</span>
+            </div>
+          </div>
+
+          <div class="explainer-dual-charts">
+            <div class="mini-chart-panel">
+              <div class="mini-chart-title">
+                左圖：資料樣本與模型預測曲線擬合狀態
+                <span>Data Fitting</span>
+              </div>
+              <svg id="mlFitSvg" width="100%" role="img" aria-label="機器學習欠擬合、最佳擬合與過擬合曲線圖"></svg>
+            </div>
+            <div class="mini-chart-panel">
+              <div class="mini-chart-title">
+                右圖：訓練誤差 vs 測試誤差 U 型權衡曲線
+                <span>Error Curve</span>
+              </div>
+              <svg id="mlErrorSvg" width="100%" role="img" aria-label="偏差與變異權衡 U 型誤差曲線圖"></svg>
+            </div>
+          </div>
+
+          <div class="chart-commentary ml" id="mlBvCommentary"></div>
+        </div>
+
+        <!-- Interactive Chart 2: Classical ML Algorithm Spectrum -->
+        <div class="explainer-card reveal" style="margin-bottom:0;">
+          <div class="explainer-header">
+            <div>
+              <span class="pill pill-ml" style="margin-bottom:8px;">互動圖表解析 02｜演算法光譜</span>
+              <h3>經典機器學習演算法對照地圖（可解釋性 vs 非線性擬合能力）</h3>
+              <p>點擊圖中任一演算法氣泡，檢視其核心數學直覺、商業實務優勢與適用限制：</p>
+            </div>
+          </div>
+          <div class="arch-stage">
+            <div class="mini-chart-panel" style="display:flex; align-items:center;">
+              <svg id="mlAlgoMapSvg" width="100%" role="img" aria-label="經典機器學習演算法可解釋性與擬合能力分佈圖"></svg>
+            </div>
+            <div class="mini-chart-panel" id="mlAlgoDetail" style="padding:22px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 4: DEEP DIVE — DEEP LEARNING (DL)
+         ==================================================================== -->
+    <section class="section section-alt" id="deep-dl">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow dl">04 / Deep Learning Deep Dive</div>
+          <h2 class="section-title">深入深度學習：神經網路如何「學習」、梯度下降與架構演進</h2>
+          <p class="section-desc">
+            深度學習的核心魔法在於「用數學微積分自動調整數百萬至數千億個權重」。從單一神經元的線性加權與非線性激活，到反向傳播與梯度下降優化，最終演化出專精不同資料形態的五大深度神經架構。
+          </p>
+        </div>
+
+        <!-- Editorial Visual Showcase 1: Deep Learning -->
+        <div class="editorial-feature reveal">
+          <figure class="editorial-figure">
+            <img src="assets/dl-architecture.jpg" alt="深度學習多層次特徵抽象示意插畫：光束穿越卷積濾波層與神經突觸層轉化為高維語意幾何體" />
+            <figcaption>圖解 02｜深度學習的階層表徵：底層濾波器捕捉局部邊緣與紋理，深層神經網路逐步抽象為高階語意概念。</figcaption>
+          </figure>
+          <div>
+            <span class="pill pill-dl" style="margin-bottom:12px;">深度學習核心直覺</span>
+            <h3 style="font-family:var(--font-serif); font-size:1.65rem; margin:0 0 14px; line-height:1.3;">為什麼「深度」與「非線性」帶來質變？</h3>
+            <p style="color:var(--text-secondary); margin:0 0 12px;">
+              單一人工神經元只做一件簡單的事：將輸入向量乘上權重加上偏差 <code>z = w·x + b</code>，再通過一個<strong>非線性激活函數</strong> <code>a = σ(z)</code>。當數百層神經元層層串聯，第一層學會辨識像素邊緣、中層組合成眼睛或車輪、深層就能直接辨識整張人臉或醫療病灶——完全無需人工撰寫特徵規則。
+            </p>
+            <p style="color:var(--text-secondary); margin:0;">
+              2012 年 <strong>AlexNet</strong> 結合 GPU 平行矩陣運算與 ReLU 引爆革命；2015 年 <strong>ResNet</strong> 憑藉殘差跳躍連接（Skip Connections）與批次正規化（BatchNorm），徹底解鎖百層以上深層網路的訓練極限。
+            </p>
+          </div>
+        </div>
+
+        <!-- DL 4-Step Training Loop -->
+        <div class="pipeline-box reveal">
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:8px;">
+            <h3 style="margin:0; font-size:1.15rem;">⚙️ 深度神經網路訓練四步驟閉環（Training Loop）</h3>
+            <span style="font-size:0.82rem; color:var(--text-muted);">每次輸入一個 Mini-Batch 資料，網路就會重複執行這四個步驟數萬至數百萬次</span>
+          </div>
+          <div class="pipeline-steps">
+            <div class="pipe-step dl">
+              <span class="step-idx">1</span>
+              <h4>前向傳播 Forward Pass</h4>
+              <p>資料逐層經過矩陣乘法與非線性激活函數，從輸入端一路計算至輸出端，產生預測機率分佈 ŷ。</p>
+            </div>
+            <div class="pipe-step dl">
+              <span class="step-idx">2</span>
+              <h4>損失計算 Loss Function</h4>
+              <p>以損失函數（如交叉熵 Cross-Entropy 或均方誤差 MSE）量化預測值 ŷ 與真實答案 y 之間的差距分數。</p>
+            </div>
+            <div class="pipe-step dl">
+              <span class="step-idx">3</span>
+              <h4>反向傳播 Backpropagation</h4>
+              <p>運用微積分<strong>鏈鎖律（Chain Rule）</strong>由輸出層往回推算誤差對每一層權重的偏導數（梯度 ∂L/∂w）。</p>
+            </div>
+            <div class="pipe-step dl">
+              <span class="step-idx">4</span>
+              <h4>梯度下降更新 Optimizer</h4>
+              <p>優化器（如 SGD、AdamW）依學習率 η 沿負梯度方向微調所有權重，讓下一次預測更接近正確答案。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Chart 3: Gradient Descent & Learning Rate -->
+        <div class="explainer-card reveal">
+          <div class="explainer-header">
+            <div>
+              <span class="pill pill-dl" style="margin-bottom:8px;">互動圖表解析 03｜優化動力學</span>
+              <h3>梯度下降（Gradient Descent）與學習率（Learning Rate）收斂模擬</h3>
+              <p>學習率是深度學習最重要的超參數。切換下方四種設定，觀察參數如何在損失山谷中尋優並影響訓練曲線：</p>
+            </div>
+            <div class="segmented-control">
+              <button class="seg-btn" data-gd-mode="small" type="button">過小 η=0.08</button>
+              <button class="seg-btn active" data-gd-mode="optimal" type="button">黃金 η=0.35</button>
+              <button class="seg-btn" data-gd-mode="large" type="button">過大震盪 η=1.92</button>
+              <button class="seg-btn" data-gd-mode="adam" type="button">AdamW 動量</button>
+            </div>
+          </div>
+
+          <div class="explainer-dual-charts">
+            <div class="mini-chart-panel">
+              <div class="mini-chart-title">
+                左圖：損失地形圖與權重下降軌跡
+                <span>Loss Landscape L(w)</span>
+              </div>
+              <svg id="gdLandscapeSvg" width="100%" role="img" aria-label="損失函數拋物線與梯度下降步進軌跡圖"></svg>
+            </div>
+            <div class="mini-chart-panel">
+              <div class="mini-chart-title">
+                右圖：迭代步數 vs 訓練損失收斂曲線
+                <span>Training Loss Curve</span>
+              </div>
+              <svg id="gdLossSvg" width="100%" role="img" aria-label="訓練週期與損失值收斂折線圖"></svg>
+            </div>
+          </div>
+
+          <div class="chart-commentary dl" id="gdCommentary"></div>
+        </div>
+
+        <!-- Interactive Chart 4: Activation Functions & Derivatives -->
+        <div class="explainer-card reveal">
+          <div class="explainer-header">
+            <div>
+              <span class="pill pill-dl" style="margin-bottom:8px;">互動圖表解析 04｜突破梯度消失的關鍵</span>
+              <h3>核心激活函數（Activation Functions）與導數梯度對照圖譜</h3>
+              <p>切換不同激活函數，對照左圖「輸出曲線 f(x)」與右圖「反向傳播梯度 f'(x)」，一眼看懂深層網路訓練的演進奧秘：</p>
+            </div>
+            <div class="segmented-control">
+              <button class="seg-btn" data-act-fn="sigmoid" type="button">Sigmoid</button>
+              <button class="seg-btn" data-act-fn="tanh" type="button">Tanh</button>
+              <button class="seg-btn" data-act-fn="relu" type="button">ReLU</button>
+              <button class="seg-btn active" data-act-fn="gelu" type="button">GELU</button>
+              <button class="seg-btn" data-act-fn="all" type="button">全部疊圖</button>
+            </div>
+          </div>
+
+          <div class="explainer-dual-charts">
+            <div class="mini-chart-panel">
+              <div class="mini-chart-title">
+                左圖：激活函數輸出曲線 f(x)
+                <span>Forward Output</span>
+              </div>
+              <svg id="actFnSvg" width="100%" role="img" aria-label="Sigmoid Tanh ReLU GELU 激活函數曲線對照圖"></svg>
+            </div>
+            <div class="mini-chart-panel">
+              <div class="mini-chart-title">
+                右圖：導數 / 梯度曲線 f'(x)（決定反向傳播強度）
+                <span>Gradient Flow</span>
+              </div>
+              <svg id="actDerSvg" width="100%" role="img" aria-label="四大激活函數導數梯度對照圖"></svg>
+            </div>
+          </div>
+
+          <div class="chart-commentary dl" id="actCommentary"></div>
+        </div>
+
+        <!-- Interactive Architecture Switcher -->
+        <div class="reveal" id="architectures">
+          <div style="margin-bottom:18px;">
+            <span class="pill pill-dl" style="margin-bottom:8px;">架構演化瀏覽器</span>
+            <h3 style="margin:0 0 6px; font-size:1.35rem;">五大關鍵神經網路架構結構圖解</h3>
+            <p style="margin:0; font-size:0.92rem; color:var(--text-secondary);">不同資料結構催生不同網路設計：從表格（MLP）、影像網格（CNN）、時間序列（RNN/LSTM）一路演化至全域平行（Transformer）與高效稀疏（MoE）。</p>
+          </div>
+
+          <div class="arch-tabs" role="tablist">
+            <button class="arch-tab" data-arch="mlp" type="button">MLP 多層感知器</button>
+            <button class="arch-tab" data-arch="cnn" type="button">CNN 卷積網路</button>
+            <button class="arch-tab" data-arch="rnn" type="button">RNN / LSTM 循環網路</button>
+            <button class="arch-tab active" data-arch="transformer" type="button">Transformer 自注意力</button>
+            <button class="arch-tab" data-arch="moe" type="button">MoE 混合專家</button>
+          </div>
+
+          <div class="arch-stage">
+            <div class="arch-diagram-box" id="archDiagramBox"></div>
+            <div class="arch-info-box" id="archInfoBox"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 5: DEEP DIVE — LARGE LANGUAGE MODELS (LLM)
+         ==================================================================== -->
+    <section class="section" id="deep-llm">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow llm">05 / Large Language Models Deep Dive</div>
+          <h2 class="section-title">深入大型語言模型：訓練生命週期、機率生成與推理時代</h2>
+          <p class="section-desc">
+            大型語言模型本質上是一個「在超高維語意空間預測下一個詞元」的機率引擎，卻在規模突破臨界點、歷經指令微調與強化學習對齊後，湧現出驚人的世界知識、寫作編程與多步驟邏輯推理能力。
+          </p>
+        </div>
+
+        <!-- Editorial Visual Showcase 2: LLM & Reasoning -->
+        <div class="editorial-feature reverse reveal">
+          <div>
+            <span class="pill pill-llm" style="margin-bottom:12px;">2024–2026 前沿範式轉移</span>
+            <h3 style="font-family:var(--font-serif); font-size:1.65rem; margin:0 0 14px; line-height:1.3;">三大核心躍遷：擴展定律、原生全模態與「慢思考」推理</h3>
+            <ul class="feature-list" style="gap:12px;">
+              <li><strong>Scaling Laws 的三次演進：</strong>從 2020 年預訓練冪律（C ≈ 6ND）、2022 年 Chinchilla 算力最優配比（每參數約 20 Tokens），演進至 2025–2026 年的<strong>測試期算力擴展（Test-Time Compute）</strong>——讓模型在回答前多花推論算力思考，換取媲美參數倍增的解題突破。</li>
+              <li><strong>原生全模態（Any-to-Any）：</strong>拋棄早期外掛轉接器，現代 Omni 模型將文字、影像、音訊與程式碼直接詞元化進入同一條 Transformer 骨幹同步理解與生成。</li>
+              <li><strong>System-2 推理模型崛起：</strong>透過結果與過程獎勵（ORM / PRM）結合強化學習（如 GRPO / PPO 變體），讓模型學會拆解難題、自我檢查並主動修正推論錯誤。</li>
+            </ul>
+          </div>
+          <figure class="editorial-figure">
+            <img src="assets/llm-transformer.jpg" alt="大型語言模型自注意力機制概念插畫：半透明詞元方塊透過金琥珀與鈷藍注意力光絲匯聚於水晶稜鏡" />
+            <figcaption>圖解 03｜Transformer 自注意力與推理稜鏡：每個詞元同時向全域上下文投射注意力權重，經多層提煉折射出精準推理輸出。</figcaption>
+          </figure>
+        </div>
+
+        <!-- LLM 4-Stage Training Lifecycle + Compute Distribution Bar -->
+        <div class="pipeline-box reveal">
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:8px;">
+            <h3 style="margin:0; font-size:1.15rem;">🏗️ 現代 LLM 四階段誕生管線與算力佔比結構</h3>
+            <span style="font-size:0.82rem; color:var(--text-muted);">從原始網路文字到安全推理助理的完整蛻變</span>
+          </div>
+
+          <div class="compute-stack-wrap">
+            <div style="font-size:0.8rem; font-weight:700; margin-bottom:6px; color:var(--text-secondary);">總訓練算力資源分佈（高度前置於預訓練階段）：</div>
+            <div class="compute-stack-bar" role="img" aria-label="LLM 訓練算力分配：預訓練佔約 95.5%，SFT 佔 2.8%，對齊與強化學習佔 1.7%">
+              <div class="cs-pre" title="Pre-training 預訓練：~95%–99%"></div>
+              <div class="cs-sft" title="SFT 監督微調：~1%–3%"></div>
+              <div class="cs-rl" title="RLHF / DPO / GRPO：~1%–2%"></div>
+            </div>
+            <div class="compute-stack-legend">
+              <span><strong style="color:#EA580C;">■ 預訓練 Pre-training (~95%–99%)</strong>：萬卡 GPU 跑數月，注入世界知識</span>
+              <span><strong style="color:#4F46E5;">■ 指令微調 SFT (~1%–3%)</strong>：學會對話格式</span>
+              <span><strong style="color:#0D9488;">■ 對齊與推理 RL (~1%–2%)</strong>：安全對齊與深度思考</span>
+            </div>
+          </div>
+
+          <div class="pipeline-steps">
+            <div class="pipe-step llm">
+              <span class="step-idx">1</span>
+              <h4>預訓練 Pre-training</h4>
+              <p>以自監督「預測下一個詞元」讀遍數十兆網頁、書籍與程式碼，產出知識淵博但尚未學會對話禮儀的 <strong>Base Model</strong>。</p>
+            </div>
+            <div class="pipe-step llm">
+              <span class="step-idx">2</span>
+              <h4>監督微調 SFT / LoRA</h4>
+              <p>使用數萬至數十萬組高品質「提問–理想回答」示範對話進行精修，教會模型聽懂系統指令、角色扮演與結構化輸出。</p>
+            </div>
+            <div class="pipe-step llm">
+              <span class="step-idx">3</span>
+              <h4>偏好對齊 RLHF / DPO</h4>
+              <p>透過人類偏好排序（RLHF + 獎勵模型 PPO，或免獎勵模型的直接偏好優化 DPO），大幅降低有害輸出與胡亂編造。</p>
+            </div>
+            <div class="pipe-step llm">
+              <span class="step-idx">4</span>
+              <h4>推理強化 GRPO / RL</h4>
+              <p>針對數學、程式等可驗證任務，讓模型生成多條思維鏈並以群組相對獎勵（GRPO）自我演進，激發反思與驗算能力。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Chart 5: Next-Token Prediction & Temperature Simulator -->
+        <div class="explainer-card reveal">
+          <div class="explainer-header">
+            <div>
+              <span class="pill pill-llm" style="margin-bottom:8px;">互動圖表解析 05｜LLM 生成本質與幻覺成因</span>
+              <h3>下一個詞元預測（Next-Token Prediction）與溫度參數（Temperature）模擬器</h3>
+              <p>假設輸入提示詞：<strong>「在未來的臨床醫療中，人工智慧最能協助醫師＿＿＿」</strong>。拖動溫度滑桿觀察候選詞元的 Softmax 機率與 Top-p (0.90) 核採樣如何改變：</p>
+            </div>
+          </div>
+
+          <div class="control-strip">
+            <div class="slider-group">
+              <label for="llmTempSlider">解碼溫度參數 Temperature（低溫保守 ↔ 高溫發散）：</label>
+              <input type="range" id="llmTempSlider" class="styled-range llm" min="0.1" max="1.8" step="0.05" value="0.7" />
+              <span class="value-readout" id="llmTempVal">T = 0.70</span>
+            </div>
+          </div>
+
+          <div class="mini-chart-panel" style="margin-bottom:20px;">
+            <div class="mini-chart-title">
+              候選詞元條件機率分佈 P(Next Token | Context)
+              <span>橘＝合理納入 Top-p ｜ 紅＝偏離/幻覺風險 ｜ 灰＝已截斷</span>
+            </div>
+            <svg id="llmProbSvg" width="100%" role="img" aria-label="不同溫度下 LLM 下一個詞元機率分佈長條圖"></svg>
+          </div>
+
+          <div class="chart-commentary llm" id="llmTempCommentary"></div>
+        </div>
+
+        <!-- Interactive Chart 6: Test-Time Compute + RAG vs Fine-Tuning -->
+        <div class="bento-2 reveal" style="margin-bottom:36px;">
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <span class="pill pill-llm" style="margin-bottom:8px;">圖表解析 06｜推理範式</span>
+                <h3>測試期算力擴展（System-1 vs System-2）</h3>
+                <p>在複雜數學與演算法難題上，拉長推論思考詞元帶來的準確度躍升趨勢</p>
+              </div>
+            </div>
+            <svg id="testTimeSvg" width="100%" role="img" aria-label="傳統快答模型與推理模型隨思考詞元擴展之準確度對照折線圖"></svg>
+            <div style="margin-top:14px; padding:14px 16px; border-radius:10px; background:var(--bg-surface-alt); font-size:0.84rem; color:var(--text-secondary);">
+              <strong>圖表文字解讀：</strong>傳統快答模型（灰虛線）無論重試幾次都受限於單次前向直覺，準確度迅速觸頂；而推理型模型（橘實線）在推論當下分配更多<strong>思考詞元（256 → 32K）</strong>進行假設檢驗與回溯修正，準確度隨測試算力呈對數線性穩定攀升，成為 2025–2026 最具突破性的第二條擴展曲線。
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <span class="pill pill-llm" style="margin-bottom:8px;">企業落地必備</span>
+                <h3>RAG 檢索增強 vs 模型微調（Fine-Tuning）</h3>
+                <p>讓 LLM 懂企業知識的兩大主流工程路線對照</p>
+              </div>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="compare-table" style="min-width:100%; font-size:0.83rem;">
+                <thead>
+                  <tr>
+                    <th>比較面向</th>
+                    <th class="col-ml">RAG（檢索增強生成）</th>
+                    <th class="col-llm">Fine-Tuning（權重微調）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>核心目的</strong></td>
+                    <td>於推論當下注入<strong>最新外部或私有事實知識</strong></td>
+                    <td>內化特定<strong>語氣風格、專有術語或嚴格輸出格式</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>知識更新</strong></td>
+                    <td><strong>即時生效：</strong>更新向量資料庫即可，免重訓</td>
+                    <td><strong>靜態緩慢：</strong>需重新收集資料集並執行訓練部署</td>
+                  </tr>
+                  <tr>
+                    <td><strong>幻覺控制</strong></td>
+                    <td>可強制附帶原文引用來源，事實查核度高</td>
+                    <td>純靠權重記憶仍可能編造過時或未知事實</td>
+                  </tr>
+                  <tr>
+                    <td><strong>成本結構</strong></td>
+                    <td>前期建置低；推論期輸入較長上下文費用略增</td>
+                    <td>前期算力與資料清洗高；推論期提示詞更精簡</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin:14px 0 0;">
+              💡 <strong>最佳實務口訣：</strong>「補新知識用 <strong>RAG</strong>，改行為格式用 <strong>Fine-Tuning</strong>，高階企業系統常將兩者並用！」
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive Self-Attention Lab (Integrated seamlessly into LLM Chapter) -->
+        <div class="attention-lab reveal" id="attention-lab">
+          <div class="attention-controls">
+            <div>
+              <span class="pill pill-llm" style="margin-bottom:8px;">互動實驗室 07｜Transformer 核心引擎</span>
+              <h3 style="margin:0 0 4px; font-size:1.25rem;">自注意力機制（Self-Attention）跨距離語意連線視覺化</h3>
+              <div style="font-size:0.82rem; color:var(--text-muted); font-family:var(--font-mono);">Attention(Q, K, V) = softmax(Q · Kᵀ / √dₖ) · V ｜ 點擊下方任一詞元觀察權重弧線</div>
+            </div>
+            <div class="preset-btns">
+              <button class="preset-btn active" data-preset="zh" type="button">中文範例：代名詞跨距消歧</button>
+              <button class="preset-btn" data-preset="en" type="button">English Example: Coreference</button>
+            </div>
+          </div>
+
+          <div class="attention-canvas-wrap">
+            <div class="token-row" id="attentionTokenRow"></div>
+            <svg class="attention-svg" id="attentionSvg" aria-label="自注意力權重弧線視覺化"></svg>
+          </div>
+
+          <div class="attention-insight" id="attentionInsight"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 6: QUANTITATIVE DATA VISUALIZATION & BENCHMARKS
+         ==================================================================== -->
+    <section class="section section-alt" id="analytics">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">06 / Empirical Data &amp; Benchmarks</div>
+          <h2 class="section-title">實證數據圖表：算力爆發、能力雷達與基準躍升</h2>
+          <p class="section-desc">
+            彙整 Epoch AI 算力追蹤資料與經典論文數據，視覺化呈現 2012 至 2026 年間 AI 訓練規模如何跨越八個數量級，以及評測標準為何從 MMLU 邁向博士級難題 GPQA。
+          </p>
+        </div>
+
+        <!-- Top Charts Row: Scaling Chart + Radar Chart -->
+        <div class="charts-grid reveal">
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h3>代表模型擴展趨勢（2012–2026・對數尺度）</h3>
+                <p>滑鼠移至任一圓點檢視該模型算力（FLOPs）、參數量與歷史突破</p>
+              </div>
+              <div class="segmented-control">
+                <button class="seg-btn active" data-scale-mode="flops" type="button">訓練算力 (FLOPs)</button>
+                <button class="seg-btn" data-scale-mode="params" type="button">參數規模 (Params)</button>
+              </div>
+            </div>
+
+            <div class="svg-chart-wrap">
+              <svg id="scalingChartSvg" width="100%" role="img" aria-label="AI 訓練算力與參數量對數成長折線圖"></svg>
+              <div class="chart-tooltip" id="scalingTooltip"></div>
+            </div>
+
+            <div class="chart-legend">
+              <span class="legend-item"><span class="legend-dot" style="background:#4F46E5;"></span>深度學習視覺里程碑</span>
+              <span class="legend-item"><span class="legend-dot" style="background:#EA580C;"></span>密集型 / 前沿 LLM</span>
+              <span class="legend-item"><span class="legend-dot" style="background:#0D9488;"></span>高效 MoE 推理架構（DeepSeek-R1）</span>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h3>六維能力光譜雷達圖</h3>
+                <p>點擊下方圖例可自由顯示或隱藏特定技術層</p>
+              </div>
+            </div>
+
+            <div class="svg-chart-wrap" style="margin:auto 0;">
+              <svg id="radarChartSvg" width="100%" role="img" aria-label="機器學習、深度學習與大型語言模型六維能力比較雷達圖"></svg>
+            </div>
+
+            <div class="chart-legend" style="justify-content:center;">
+              <span class="legend-item radar-toggle" data-series="ml"><span class="legend-dot" style="background:#0D9488;"></span>機器學習 (ML)</span>
+              <span class="legend-item radar-toggle" data-series="dl"><span class="legend-dot" style="background:#4F46E5;"></span>深度學習 (DL)</span>
+              <span class="legend-item radar-toggle" data-series="llm"><span class="legend-dot" style="background:#EA580C;"></span>大型語言模型 (LLM)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: Benchmark Saturation & Statistical Evolution -->
+        <div class="bento-2 reveal">
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h3>從 MMLU 飽和邁向博士級 GPQA 推理</h3>
+                <p>紫條：MMLU 綜合學科知識 ｜ 琥珀條：GPQA Diamond 博士級防搜尋科學問答</p>
+              </div>
+            </div>
+            <div class="bench-list" id="benchmarkList"></div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin:18px 0 0;">
+              註：隨著前沿模型在 MMLU 紛紛突破 88–90% 逼近上限，學界與產業界已轉向 GPQA（物理、化學、生物博士出題）與 SWE-bench 軟體工程基準來衡量真實推理實力。
+            </p>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h3>大型語言模型十年關鍵指標演進（2017–2026）</h3>
+                <p>參數、訓練詞元、上下文長度與生態格局的世代躍遷</p>
+              </div>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="compare-table" style="min-width:100%; font-size:0.84rem;">
+                <thead>
+                  <tr>
+                    <th>維度</th>
+                    <th>2017–2018 早期</th>
+                    <th>2020–2022 擴展期</th>
+                    <th>2024–2026 推理世代</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>參數量 (N)</strong></td>
+                    <td>65M – 340M</td>
+                    <td>10B – 175B</td>
+                    <td>數百 B 至 &gt;1T (Dense / MoE)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>訓練詞元 (D)</strong></td>
+                    <td>10B – 30B</td>
+                    <td>300B – 1.5T</td>
+                    <td>數十兆至百兆高品質/合成詞元</td>
+                  </tr>
+                  <tr>
+                    <td><strong>上下文視窗</strong></td>
+                    <td>512 – 2K</td>
+                    <td>4K – 8K</td>
+                    <td>128K – 2M+ 原生檢索</td>
+                  </tr>
+                  <tr>
+                    <td><strong>推論模式</strong></td>
+                    <td>單次前向補全</td>
+                    <td>提示詞指令遵循</td>
+                    <td>思維鏈搜尋、測試期算力、Agent 工具調用</td>
+                  </tr>
+                  <tr>
+                    <td><strong>生態結構</strong></td>
+                    <td>學術與封閉實驗室</td>
+                    <td>少數閉源巨頭主導</td>
+                    <td>開源權重（Llama/DeepSeek）與閉源並駕齊驅</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 7: FILTERABLE HISTORICAL TIMELINE (1943 - 2026)
+         ==================================================================== -->
+    <section class="section" id="timeline">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">07 / Historical Milestones</div>
+          <h2 class="section-title">八十三年智慧演進里程碑（1943 – 2026）</h2>
+          <p class="section-desc">
+            透過分類篩選器，回顧關鍵論文、演算法與指標模型如何一步步將數學理論化為改變全球產業的基礎設施。
+          </p>
+        </div>
+
+        <div class="filter-bar reveal">
+          <button class="filter-btn active" data-filter="all" type="button">全部里程碑 (12)</button>
+          <button class="filter-btn" data-filter="ml" type="button">機器學習 ML</button>
+          <button class="filter-btn" data-filter="dl" type="button">深度學習 DL</button>
+          <button class="filter-btn" data-filter="llm" type="button">大型語言模型 LLM</button>
+        </div>
+
+        <div class="timeline-grid reveal" id="timelineGrid"></div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 8: FULL COMPARISON MATRIX & INTERACTIVE DECISION ADVISOR
+         ==================================================================== -->
+    <section class="section section-alt" id="comparison">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">08 / Side-by-Side Comparison &amp; Selection</div>
+          <h2 class="section-title">全方位規格對照與實務選型指南</h2>
+          <p class="section-desc">
+            不是每個問題都需要動用千億參數大模型。下表清楚列出三者在資料、特徵工程、硬體成本與場景上的權衡，並提供互動選型建議器。
+          </p>
+        </div>
+
+        <div class="table-wrap reveal">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th style="width:16%;">比較維度</th>
+                <th class="col-ml" style="width:28%;">機器學習 (ML)</th>
+                <th class="col-dl" style="width:28%;">深度學習 (DL)</th>
+                <th class="col-llm" style="width:28%;">大型語言模型 (LLM)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>核心定義</strong></td>
+                <td>從結構化與半結構化資料學習統計規律，進行數值預測或分類。</td>
+                <td>透過多層類神經網路處理複雜非結構化資料並自動提取高維特徵。</td>
+                <td>基於 Transformer 的超大規模深度學習模型，專精語言理解、生成與推理。</td>
+              </tr>
+              <tr>
+                <td><strong>資料規模依賴</strong></td>
+                <td>中小型資料集（數千至百萬筆）即可達到優異成效。</td>
+                <td>高度依賴大量標註或未標註資料（數十萬至數億樣本）。</td>
+                <td>需要 PB 級網路文本、書籍、程式碼與高品質合成資料（數十兆詞元）。</td>
+              </tr>
+              <tr>
+                <td><strong>特徵工程</strong></td>
+                <td><strong>人工主導：</strong>需由領域專家設計欄位與衍生指標，可解釋性極高。</td>
+                <td><strong>自動學習：</strong>端對端由神經網路自動發掘空間或時序特徵。</td>
+                <td><strong>自動且具語境：</strong>無須手工特徵，直接透過提示詞或少量範例適應新任務。</td>
+              </tr>
+              <tr>
+                <td><strong>硬體與成本</strong></td>
+                <td>標準 CPU 即可快速訓練與毫秒級推論，部署成本最低。</td>
+                <td>訓練需 GPU / TPU 加速；邊緣推論常需量化壓縮。</td>
+                <td>預訓練需數千至萬張高階 GPU 叢集；實務多採 API 呼叫或微調開源權重。</td>
+              </tr>
+              <tr>
+                <td><strong>代表演算法</strong></td>
+                <td>線性/邏輯迴歸、決策樹、隨機森林、SVM、XGBoost、K-Means。</td>
+                <td>MLP、CNN（ResNet）、RNN/LSTM、Autoencoder、Diffusion。</td>
+                <td>Decoder-Only（GPT / Llama / DeepSeek）、Encoder（BERT）、MoE 推理模型。</td>
+              </tr>
+              <tr>
+                <td><strong>殺手級應用</strong></td>
+                <td>金融風控與詐欺偵測、需求預測、設備預測性維護、客群細分。</td>
+                <td>醫療影像輔助診斷、自駕車視覺感知、即時語音辨識、個人化推薦。</td>
+                <td>AI 對話助理、程式碼生成與重構、長文件摘要翻譯、企業 RAG 與自主 Agent。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Technical Decision Advisor -->
+        <div class="advisor-box reveal">
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
+            <div>
+              <h3 style="margin:0 0 4px; font-size:1.3rem;">🧭 互動選型顧問：「我的專案該用 ML、DL 還是 LLM？」</h3>
+              <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">點選下方最接近您業務情境的卡片，立即取得架構建議與原因解析：</p>
+            </div>
+          </div>
+
+          <div class="scenario-grid" id="scenarioGrid"></div>
+          <div class="advisor-result" id="advisorResult"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 9: SEARCHABLE GLOSSARY
+         ==================================================================== -->
+    <section class="section" id="glossary">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">09 / Quick Reference Glossary</div>
+          <h2 class="section-title">核心術語速查詞典</h2>
+          <p class="section-desc">
+            輸入關鍵字（例如 <code>Transformer</code>、<code>XGBoost</code>、<code>RAG</code>、<code>MoE</code> 或 <code>RLHF</code>）即時篩選重點解釋。
+          </p>
+        </div>
+
+        <div class="search-input-wrap reveal">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="glossarySearch" class="search-input" placeholder="搜尋術語、英文縮寫或技術概念…" aria-label="搜尋 AI 核心術語" />
+        </div>
+
+        <div class="glossary-grid reveal" id="glossaryGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       FOOTER & SOURCES
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom:10px;">
+            <span class="brand-mark">AI</span>
+            <span>智慧演進圖譜｜ML・DL・LLM</span>
+          </div>
+          <p style="margin:0; font-size:0.86rem; color:var(--text-secondary); max-width:520px;">
+            本互動式知識網頁由公開學術論文、權威技術文獻與實證統計資料系統化整理製作，所有圖表、互動實驗室與視覺插畫皆採本地資源封裝，支援離線瀏覽與深淺色雙主題閱讀。
+          </p>
+        </div>
+
+        <div>
+          <strong style="font-size:0.86rem; color:var(--text-primary);">資料整理參考來源</strong>
+          <div class="source-list">
+            <span class="source-tag">Epoch AI (Compute Trends)</span>
+            <span class="source-tag">arXiv (Attention Is All You Need)</span>
+            <span class="source-tag">arXiv (Llama 3 &amp; DeepSeek-R1)</span>
+            <span class="source-tag">IBM &amp; Databricks AI Guides</span>
+            <span class="source-tag">Our World in Data</span>
+            <span class="source-tag">MMLU &amp; GPQA Benchmarks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
